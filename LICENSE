@@ -19,8 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-The files under references/ are not covered by this license. They keep the
-licenses of their sources: references/wikipedia-signs-full.md is adapted from
-Wikipedia "Signs of AI writing" (CC BY-SA 4.0); references/upstream/humanizer
-and references/upstream/avoid-ai-writing keep their own MIT licenses.
