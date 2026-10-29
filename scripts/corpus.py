@@ -13,7 +13,7 @@
 
 Văn AI commit được (do mình sinh). Văn người chỉ nằm trong cache + hash, theo cách của avoid-ai-writing/corpus.
 """
-import argparse, hashlib, json, os, re, subprocess, sys, time, urllib.request, urllib.parse
+import argparse, hashlib, html as htmlmod, json, os, re, subprocess, sys, time, urllib.request, urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -100,7 +100,7 @@ def sha(b):
 
 
 def http(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "human-writing-skill/2.0 (corpus fetch for local tests; contact: github.com/TTN0623)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "human-writing-skill/2.1 (corpus fetch for local tests; contact: github.com/TTN0623)"})
     with urllib.request.urlopen(req, timeout=60) as r:
         return r.read()
 
@@ -113,8 +113,35 @@ def clean_wikitext(w):
     w = re.sub(r"\[https?://\S+ ([^\]]*)\]", r"\1", w); w = re.sub(r"<[^>]+>", "", w)
     w = re.sub(r"'{2,}", "", w); w = re.sub(r"^==+\s*(.*?)\s*==+$", r"## \1", w, flags=re.M)
     w = re.sub(r"^\s*\|.*$", "", w, flags=re.M); w = re.sub(r"^[*#:;].*$", "", w, flags=re.M)
+    w = htmlmod.unescape(w).replace("\u00a0", " ")
     w = re.sub(r"\n{3,}", "\n\n", w)
     return w.strip()
+
+
+def strip_ws_header(html):
+    """Bỏ khung đầu trang Wikisource (tên, năm, ghi chú trích Wikipedia): chỉ giữ phần truyện."""
+    k = html.find('class="prose"')
+    if k >= 0:
+        return html[html.rfind("<", 0, k):]
+    k = html.find('id="headerContainer"')
+    if k >= 0:
+        e = html.find('class="ws-noexport"', k)
+        if e >= 0:
+            return html[:html.rfind("<", 0, k)] + html[html.rfind("<", 0, e):]
+    return html
+
+
+def cut_words(text, n, max_lines=400):
+    """Cắt còn n chữ nhưng giữ xuống dòng (bản 2.1.0 trở về trước nối hết thành một dòng)."""
+    out, k = [], 0
+    for line in text.split("\n")[:max_lines]:
+        ws = line.split()
+        if k + len(ws) > n:
+            if ws[: n - k]:
+                out.append(" ".join(ws[: n - k]))
+            break
+        out.append(" ".join(ws)); k += len(ws)
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(out)).strip()
 
 
 def fetch(a):
@@ -141,16 +168,17 @@ def fetch(a):
             html = json.loads(raw)["parse"]["text"]
             if isinstance(html, dict):
                 html = html.get("*", "")
+            html = strip_ws_header(html)
             html = re.sub(r"<(script|style|table)[^>]*>.*?</\1>", "", html, flags=re.S | re.I)
             html = re.sub(r"<(span|div)[^>]*class=\"[^\"]*(pagenum|ws-noexport|noprint|mw-editsection|reference)[^\"]*\"[^>]*>.*?</\1>", "", html, flags=re.S | re.I)
             html = re.sub(r"</(p|div|h\d|li|br)>", "\n\n", html, flags=re.I)
             text = re.sub(r"<[^>]+>", "", html)
-            text = re.sub(r"&nbsp;", " ", text); text = re.sub(r"&amp;", "&", text); text = re.sub(r"&quot;", '"', text); text = re.sub(r"&#39;", "'", text)
+            text = htmlmod.unescape(text).replace("\u00a0", " ")
             text = re.sub(r"[ \t]+", " ", text); text = re.sub(r"\n{3,}", "\n\n", text).strip()
         else:
             text = raw
         if d.get("max_words"):
-            text = " ".join(text.split("\n")[:400]); text = " ".join(text.split()[: d["max_words"]])
+            text = cut_words(text, d["max_words"])
         body = f"---\nid: {d['id']}\nlabel: human\nkind: {d.get('kind','doc')}\nlang: {d.get('lang','vi')}\nsource: {d['url']}\nlicense: {d.get('license','')}\n---\n\n{text}\n"
         open(path, "w", encoding="utf-8").write(body)
         h = sha(body.encode("utf-8"))

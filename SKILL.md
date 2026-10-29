@@ -3,7 +3,7 @@ name: human-writing
 description: >-
   Bộ luật viết như người thật (tiếng Việt và tiếng Anh), bắt buộc cho mọi văn bản giao người khác đọc: caption, bài social, quảng cáo, kịch bản, email, tin nhắn khách, proposal, báo cáo, nội dung slide, bài học tập. Cấm dấu hiệu văn AI (mở bài sáo, song song phủ định, gạch ngang dài, bộ ba, lời chatbot, giọng chăm sóc khách hàng, câu hỏi móc rồi trấn an). Có check.py chấm điểm AI 0 đến 100 theo 6 thể loại và giọng riêng (voices/), hook chặn khi lưu file sản phẩm, bộ kiểm thử trên kho văn AI và văn người. Dùng cả khi Tài nói 'viết cho tự nhiên', 'nghe như AI', 'humanize', 'soát giọng AI', 'điểm AI'.
 metadata:
-  version: "2.1.0"
+  version: "2.1.1"
   created: "2026-10-08"
   updated: "2026-10-29"
 ---
@@ -45,7 +45,7 @@ Wikipedia nhấn mạnh: các dấu hiệu chỉ là *triệu chứng*. Bệnh t
 
 Điểm tính từ mật độ: mỗi LỖI nặng gấp ba CẢNH BÁO, chia cho số chữ (tối thiểu 80 chữ để bài ngắn không bị phạt oan), rồi ép về thang 0 đến 100. Một bài 200 chữ có 1 LỖI và 2 CẢNH BÁO được khoảng 63 điểm; cùng bài đó chỉ còn 2 CẢNH BÁO thì khoảng 33.
 
-Số đo trên kho mẫu (`evals/`, bản 2.1.0): văn AI sinh mặc định (80 bài từ Gemini, Claude, GPT-OSS, đủ 6 thể loại) có 82% file dính LỖI, điểm trung vị 78; văn người (Wikipedia tiếng Việt bản cũ, truyện trên Wikisource, tin nhắn tự gõ của Tài) có 1,4% file dính LỖI, điểm trung vị 0, 94% file dưới 20. Bản 1.0.0 đo trên 27 bài AI đầu tiên chỉ bắt được 37%. Bảng đầy đủ nằm trong `evals/baseline.json` và CHANGELOG.
+Số đo trên kho mẫu (`evals/`, bản 2.1.1): văn AI sinh mặc định (80 bài từ Gemini, Claude, GPT-OSS, đủ 6 thể loại) có 82% file dính LỖI, điểm trung vị 78; văn người (Wikipedia tiếng Việt bản cũ, truyện trên Wikisource, tin nhắn tự gõ của Tài) có 0,7% file dính LỖI, điểm trung vị 0, 94% file dưới 20. Bản 1.0.0 đo trên 27 bài AI đầu tiên chỉ bắt được 37%. Bảng đầy đủ nằm trong `evals/baseline.json` và CHANGELOG.
 
 ## THỂ LOẠI
 

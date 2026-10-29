@@ -195,20 +195,20 @@
  },
  "human": {
   "files": 142,
-  "words": 30818,
-  "files_with_error": 2,
-  "pct_files_with_error": 1.4,
-  "errors_per_1000w": 0.13,
-  "warns_per_1000w": 0.62,
+  "words": 30713,
+  "files_with_error": 1,
+  "pct_files_with_error": 0.7,
+  "errors_per_1000w": 0.1,
+  "warns_per_1000w": 0.75,
   "score_median": 0.0,
-  "score_mean": 1.8,
+  "score_mean": 1.9,
   "pct_score_ge_50": 0.0,
   "pct_score_lt_20": 94.4,
   "per_code": {
    "B5-NEG": {
     "errors": 0,
     "warnings": 2,
-    "per_1000w": 0.06
+    "per_1000w": 0.07
    },
    "C10-PROMO": {
     "errors": 0,
@@ -217,8 +217,8 @@
    },
    "C11-TRANS": {
     "errors": 0,
-    "warnings": 2,
-    "per_1000w": 0.06
+    "warnings": 5,
+    "per_1000w": 0.16
    },
    "C16-TREND": {
     "errors": 0,
@@ -227,8 +227,8 @@
    },
    "C2-SUM": {
     "errors": 0,
-    "warnings": 2,
-    "per_1000w": 0.06
+    "warnings": 3,
+    "per_1000w": 0.1
    },
    "C5-COPULA": {
     "errors": 0,
@@ -241,9 +241,9 @@
     "per_1000w": 0.03
    },
    "D1-DASH": {
-    "errors": 4,
+    "errors": 3,
     "warnings": 0,
-    "per_1000w": 0.13
+    "per_1000w": 0.1
    },
    "D11-NPLIST": {
     "errors": 0,
@@ -258,7 +258,7 @@
    "D9-QUOTE": {
     "errors": 0,
     "warnings": 2,
-    "per_1000w": 0.06
+    "per_1000w": 0.07
    }
   }
  }

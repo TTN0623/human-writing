@@ -11,7 +11,7 @@
    "url": "https://vi.wikipedia.org/w/index.php?oldid=56731952&action=raw",
    "file": "wiki-pho.md",
    "max_words": 1500,
-   "sha256": "bc65e7db0c18b6e86e13cd06b63a1fe7046b857d27482b5e8508b4a458ae4a4b"
+   "sha256": "bd5e8c16cd8b7741b3c3acbaaf7e9cde143144d6ad01e1be0eb00d3797b43d1e"
   },
   {
    "id": "wiki-ca-phe",
@@ -23,7 +23,7 @@
    "url": "https://vi.wikipedia.org/w/index.php?oldid=56735384&action=raw",
    "file": "wiki-ca-phe.md",
    "max_words": 1500,
-   "sha256": "d929ae681c754a666d8067b8938e1195c58f9ffa013980d173319317f71ff8f8"
+   "sha256": "e2d2941504b312997966ef4131bd8751aad11f7655fd9c9a494850ea337f4ebc"
   },
   {
    "id": "wiki-thuong-mai-dien-tu",
@@ -35,7 +35,7 @@
    "url": "https://vi.wikipedia.org/w/index.php?oldid=54691546&action=raw",
    "file": "wiki-thuong-mai-dien-tu.md",
    "max_words": 1500,
-   "sha256": "cc41fbba6b23d5d7d4ac7e8d1abf4835bd0459cf4e50a251ab990bb0c9c65799"
+   "sha256": "4a9c125b7f370eeba10144a876203eb6024d18eacddece3f97a25449d49ffc90"
   },
   {
    "id": "wiki-ao-dai",
@@ -47,7 +47,7 @@
    "url": "https://vi.wikipedia.org/w/index.php?oldid=57168775&action=raw",
    "file": "wiki-ao-dai.md",
    "max_words": 1500,
-   "sha256": "47848d3d2413d2090c61f4bd4fc5725770cd59bd9843b265d0cc8f62834b7d9c"
+   "sha256": "45f75a5cc4d21a12c94cc65ce696e7e2943552362df7d441dc7613959dad144e"
   },
   {
    "id": "wiki-giao-duc-viet-nam",
@@ -59,7 +59,7 @@
    "url": "https://vi.wikipedia.org/w/index.php?oldid=57273497&action=raw",
    "file": "wiki-giao-duc-viet-nam.md",
    "max_words": 1500,
-   "sha256": "55b8826b85b968e79c66f908f6fbffed6f0335c9244b38cafa670f0b62dd3ebd"
+   "sha256": "2beebfe25697e657947354011d61ddaf5554ff77344e04da25df2701f7c3232f"
   },
   {
    "id": "wiki-ma-tran",
@@ -71,7 +71,7 @@
    "url": "https://vi.wikipedia.org/w/index.php?oldid=56598980&action=raw",
    "file": "wiki-ma-tran.md",
    "max_words": 1500,
-   "sha256": "71cc99d48a9a1833617fd68b7617f9d8e31410ee4a9e5797bd8920636d9df70a"
+   "sha256": "a37639a836cf18b876d31673c77b24adc7367ea5cb616a1ba8d5bf35e70bd442"
   },
   {
    "id": "wiki-dao-ham",
@@ -83,7 +83,7 @@
    "url": "https://vi.wikipedia.org/w/index.php?oldid=54356333&action=raw",
    "file": "wiki-dao-ham.md",
    "max_words": 1500,
-   "sha256": "3572ce31742bd03415a0a090b071fcfdb459a4dbf175b63e6c8648cb93f3a436"
+   "sha256": "a7ae2cae0b5e1eb3e094d0e70a12cf9cf99ea84f0f400c594079359504b15379"
   },
   {
    "id": "ws-lao-hac",
@@ -95,7 +95,7 @@
    "url": "https://vi.wikisource.org/w/api.php?action=parse&prop=text&format=json&page=L%C3%A3o%20H%E1%BA%A1c",
    "file": "ws-lao-hac.md",
    "max_words": 2000,
-   "sha256": "571836f9a242210970b25846c463f4bd0b91d3a7d05f972ddeaaac21d7f7990a"
+   "sha256": "dd17f34d1b4c81c8250cdaf152b07b017443f98b62698909be980aae300f46ed"
   },
   {
    "id": "ws-hai-dua-tre",
@@ -107,7 +107,7 @@
    "url": "https://vi.wikisource.org/w/index.php?title=Hai_%C4%91%E1%BB%A9a_tr%E1%BA%BB&action=raw",
    "file": "ws-hai-dua-tre.md",
    "max_words": 2000,
-   "sha256": "34abb37f4eef83e0e53321a12b0fb9eee5077ecbfb6e95c81f3d7fc786656a60"
+   "sha256": "a848b5055ba93cb2380e919b831237a34d9a91a859d818d9ad8e7199ebcd4987"
   },
   {
    "id": "ws-gio-lanh-dau-mua",
@@ -119,7 +119,7 @@
    "url": "https://vi.wikisource.org/w/api.php?action=parse&prop=text&format=json&page=Gi%C3%B3%20l%E1%BA%A1nh%20%C4%91%E1%BA%A7u%20m%C3%B9a",
    "file": "ws-gio-lanh-dau-mua.md",
    "max_words": 2000,
-   "sha256": "661ee6a568e92ca20bb444fcda919f7edf3a97327f4131920fb828f45687978d"
+   "sha256": "f07fa85070da93201c7af035c78b8ba360f7a9a97713e4aed7a0ea91298496df"
   },
   {
    "id": "ws-song-chet-mac-bay",
@@ -131,7 +131,7 @@
    "url": "https://vi.wikisource.org/w/api.php?action=parse&prop=text&format=json&page=S%E1%BB%91ng%20ch%E1%BA%BFt%20m%E1%BA%B7c%20bay",
    "file": "ws-song-chet-mac-bay.md",
    "max_words": 2000,
-   "sha256": "e3da30b2807dd86d2ce23f95c0a562f55c3ac26c63c79ac6a79dcdb93957a4cb"
+   "sha256": "c849c8a79af2b9542bab83a57202e03ea3afc282c3ab538a902eb41648c48ec3"
   },
   {
    "id": "ws-tat-den-1",
@@ -143,7 +143,7 @@
    "url": "https://vi.wikisource.org/w/api.php?action=parse&prop=text&format=json&page=T%E1%BA%AFt%20%C4%91%C3%A8n/I",
    "file": "ws-tat-den-1.md",
    "max_words": 2000,
-   "sha256": "d1b2d6b4e00ab45ce36ef4e5d4c54730c7aa0557942d768d78e250fe4e9b58d1"
+   "sha256": "716fa25022dd596d0e5056b22975cdab1dca9cc5b19dd40b487a020432e57b97"
   }
  ]
 }

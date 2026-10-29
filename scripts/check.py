@@ -30,7 +30,7 @@ import re
 import statistics
 import sys
 
-VERSION = "2.1.0"
+VERSION = "2.1.1"
 I = re.IGNORECASE | re.MULTILINE
 KINDS = ("doc", "social", "script", "email", "academic", "report")
 HERE = os.path.dirname(os.path.abspath(__file__))

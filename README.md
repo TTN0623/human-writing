@@ -1,6 +1,6 @@
 # human-writing
 
-Skill cho Claude Code để văn bản tiếng Việt (và tiếng Anh) đọc như người thật viết. Gồm bộ luật trong `SKILL.md`, script chấm điểm AI, hook chặn khi lưu file, giọng riêng cho từng kênh, và bộ kiểm thử đo trên kho văn AI và văn người. Bản 2.0.0, ngày 2026-10-29. Phần tiếng Anh ở cuối.
+Skill cho Claude Code để văn bản tiếng Việt (và tiếng Anh) đọc như người thật viết. Gồm bộ luật trong `SKILL.md`, script chấm điểm AI, hook chặn khi lưu file, giọng riêng cho từng kênh, và bộ kiểm thử đo trên kho văn AI và văn người. Bản 2.1.1, ngày 2026-10-29. Phần tiếng Anh ở cuối.
 
 ## Có gì trong đây
 

@@ -2,6 +2,15 @@
 
 Theo dạng Keep a Changelog, số phiên bản theo SemVer. Mã luật (A1-CHAT, B5-NEG…) là mã do `scripts/check.py` in ra.
 
+## 2.1.1 (2026-10-29)
+
+Sửa cách `corpus.py fetch` làm sạch văn người tải về. Không đổi luật trong `check.py`.
+
+- Lỗi cũ: khi cắt bài theo số chữ, script nối mọi dòng bằng dấu cách, nên cả 12 bài Wikipedia và Wikisource trong kho chỉ còn một dòng. Các luật đo theo dòng (lời thoại đầu dòng, nhịp câu, dòng ghi nguồn) chấm sai trên các bài này. Giờ `cut_words()` cắt đủ số chữ mà vẫn giữ xuống dòng.
+- Giải mã đủ ký tự HTML bằng `html.unescape` cho cả hai đường tải (trước đây còn sót `&#32;`, `&nbsp;`, `&ast;`).
+- Bỏ khung đầu trang Wikisource (tên, năm, ghi chú trích Wikipedia), chỉ giữ phần truyện. Hàm mới `strip_ws_header()`.
+- Đã tải lại 12 bài và ghi sha256 mới vào manifest. Văn người dính LỖI từ 1,4% xuống 0,7%: bài Lão Hạc hết bắt nhầm, chỉ còn bài ma trận có gạch ngang dài chèn ý thật. CẢNH BÁO trên 1.000 chữ của văn người từ 0,62 lên 0,75 vì các luật đo theo dòng giờ mới chạy được trên 12 bài này. Văn AI không đổi.
+
 ## 2.1.0 (2026-10-29)
 
 Tài duyệt từng trường hợp gạch ngang dài. D1-DASH giờ cho qua các chỗ gạch là ký hiệu, vẫn bắt chỗ gạch nối câu.
