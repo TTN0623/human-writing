@@ -30,7 +30,7 @@ import re
 import statistics
 import sys
 
-VERSION = "2.0.0"
+VERSION = "2.0.1"
 I = re.IGNORECASE | re.MULTILINE
 KINDS = ("doc", "social", "script", "email", "academic", "report")
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -100,7 +100,7 @@ HARD = [
     ("C4-WORD", r"\b(delv(e|es|ed|ing)|tapestry|testament|pivotal|underscor(e|es|ed|ing)|showcas(e|es|ed|ing)|intricac(y|ies)|intricate|meticulous(ly)?|boast(s|ed|ing)?|bolster(s|ed|ing)?|garner(s|ed|ing)?|interplay|vibrant|nestled|groundbreaking|renowned)\b", "AI vocabulary (Wikipedia list). Replace with a plain word."),
 
     # D. Trình bày
-    ("D1-DASH", r"—|\s--\s|\s–\s|–\s|\s–", "Gạch ngang dài. Thay bằng dấu phẩy, chấm, hai chấm, ngoặc đơn, hoặc viết lại câu."),
+    ("D1-DASH", r"(?<!<)—(?![—–-]*>)|\s--\s|\s–\s|(?<!<)–\s|\s–(?![—–-]*>)", "Gạch ngang dài. Thay bằng dấu phẩy, chấm, hai chấm, ngoặc đơn, hoặc viết lại câu. Mũi tên (—>, –>, <—) được phép."),
 ]
 
 # ---------------------------------------------------------------- CẢNH BÁO

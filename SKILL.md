@@ -3,7 +3,7 @@ name: human-writing
 description: >-
   Bộ luật viết như người thật (tiếng Việt và tiếng Anh), bắt buộc cho mọi văn bản giao người khác đọc: caption, bài social, quảng cáo, kịch bản, email, tin nhắn khách, proposal, báo cáo, nội dung slide, bài học tập. Cấm dấu hiệu văn AI (mở bài sáo, song song phủ định, gạch ngang dài, bộ ba, lời chatbot, giọng chăm sóc khách hàng, câu hỏi móc rồi trấn an). Có check.py chấm điểm AI 0 đến 100 theo 6 thể loại và giọng riêng (voices/), hook chặn khi lưu file sản phẩm, bộ kiểm thử trên kho văn AI và văn người. Dùng cả khi Tài nói 'viết cho tự nhiên', 'nghe như AI', 'humanize', 'soát giọng AI', 'điểm AI'.
 metadata:
-  version: "2.0.0"
+  version: "2.0.1"
   created: "2026-10-08"
   updated: "2026-10-29"
 ---
@@ -171,7 +171,7 @@ Mã ở cột đầu khớp với kết quả của `check.py`. **LỖI** là c�
 
 | Mã | Mức | Cấm | Ghi chú |
 |---|---|---|---|
-| D1-DASH | LỖI | Gạch ngang dài (em dash, en dash) dùng làm dấu nối câu | Thay bằng dấu phẩy, chấm, hai chấm, ngoặc đơn. Gạch nối giữa hai số (`2020–2024`) được giữ. Wikipedia 10/2026 đã chuyển dấu này xuống "dấu hiệu cũ" vì mô hình mới bị khóa không dùng; skill vẫn giữ làm luật nhà theo ý Tài. Trên kho văn người, luật này bắt 4 chỗ trong 2 bài Wikipedia và Wikisource (ký hiệu toán, dòng ghi nguồn), là tỉ lệ bắt nhầm đã biết. |
+| D1-DASH | LỖI | Gạch ngang dài (em dash, en dash) dùng làm dấu nối câu | Thay bằng dấu phẩy, chấm, hai chấm, ngoặc đơn. Gạch nối giữa hai số (`2020–2024`) được giữ. Gạch ngang dài làm mũi tên (`—>`, `–>`, `<—`, thường do máy tự đổi từ `-->`) được phép. Wikipedia 10/2026 đã chuyển dấu này xuống "dấu hiệu cũ" vì mô hình mới bị khóa không dùng; skill vẫn giữ làm luật nhà theo ý Tài. Trên kho văn người, luật này bắt 4 chỗ trong 2 bài Wikipedia và Wikisource (ký hiệu toán, dòng ghi nguồn), là tỉ lệ bắt nhầm đã biết. |
 | D2-EMOJIHEAD | LỖI | Emoji trong tiêu đề | |
 | D4-BOLDLIST | LỖI | Danh sách `- **Nhãn:** mô tả` từ 3 dòng | Viết thành câu, hoặc bỏ nhãn đậm. Nhãn chỉ giữ khi người đọc cần dò nhanh (bảng giá, thông số). |
 | D10-EMOJIBULLET | CẢNH BÁO ở social, LỖI ở còn lại | Emoji làm đầu dòng từ 3 dòng | `✅ Giao nhanh` `✅ Giá tốt` thành câu có dữ kiện |
@@ -229,7 +229,7 @@ Wikipedia liệt kê những thứ không chứng minh văn là AI: ngữ pháp 
 
 Hook `scripts/hook.py` đăng ký ở `~/.claude/settings.json` (PostToolUse cho Write, Edit, MultiEdit). Chỉ xét file `.md`, `.txt` trong thư mục sản phẩm (`outputs/`, `projects/`, `courses/`, `research/`, `team/`, `deliverables/`, `drafts/`), bỏ `.agents/`, `.claude/`, `docs/`, `prompts/`, `_archive/`, `evals/corpus/`. Write thì quét cả file và báo điểm; Edit chỉ quét đoạn mới thêm và chỉ ép LỖI. Còn LỖI thì hook trả `decision: block` kèm danh sách, Claude phải viết lại rồi lưu lại. Lỗi trong hook không bao giờ làm hỏng phiên.
 
-Kiểm thử `python3 -I scripts/test_check.py`: chạy 14 ca đơn vị trong `evals/cases/` (frontmatter nêu `kind`, `voice`, `expect_errors`, `expect_warnings`, `expect_no`, `expect_clean`, `max_score`, `min_score`), rồi in bảng đo trên kho. Thêm `--codes` để xem từng mã bắt bao nhiêu ở văn AI và văn người; `--baseline` để so với `evals/baseline.json` và báo mã nào bắt nhầm người nhiều hơn trước; `--impl <check_cu.py>` để so hai bản.
+Kiểm thử `python3 -I scripts/test_check.py`: chạy 15 ca đơn vị trong `evals/cases/` (frontmatter nêu `kind`, `voice`, `expect_errors`, `expect_warnings`, `expect_no`, `expect_clean`, `max_score`, `min_score`), rồi in bảng đo trên kho. Thêm `--codes` để xem từng mã bắt bao nhiêu ở văn AI và văn người; `--baseline` để so với `evals/baseline.json` và báo mã nào bắt nhầm người nhiều hơn trước; `--impl <check_cu.py>` để so hai bản.
 
 Kho văn `scripts/corpus.py`: `gen` sinh văn AI mặc định bằng `agy` (Gemini, Claude) vào `evals/corpus/ai/` (commit được); `fetch` tải văn người công khai (Wikipedia tiếng Việt bản trước 2020, Wikisource) vào `evals/corpus/cache/` theo `manifest.json` có sha256; `private` trích tin nhắn tự gõ của người dùng từ lịch sử phiên vào cache, bỏ tin dán lại lời AI. Văn người không bao giờ commit: văn công khai có sha256 trong `manifest.json` để tải lại đúng bản, tin nhắn riêng chỉ nằm trên máy.
 

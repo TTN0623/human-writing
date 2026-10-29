@@ -2,6 +2,11 @@
 
 Theo dạng Keep a Changelog, số phiên bản theo SemVer. Mã luật (A1-CHAT, B5-NEG…) là mã do `scripts/check.py` in ra.
 
+## 2.0.1 (2026-10-29)
+
+- D1-DASH cho phép gạch ngang dài dùng làm mũi tên: `—>`, `–>`, `<—`. Máy Mac tự đổi `-->` thành dạng này khi gõ, và người viết dùng nó để trả lời xen từng ý. Gạch ngang dài nối câu vẫn là LỖI.
+- Thêm ca `evals/cases/15-mui-ten.md`. Số đo trên kho không đổi.
+
 ## 2.0.0 (2026-10-29)
 
 Bản viết lại lớn: từ một bảng luật tự soát thành bộ công cụ có số đo. Mọi ngưỡng được đo trên kho văn AI sinh thử và kho văn người thật (`evals/`), và mọi mã trong SKILL.md khớp với mã script in ra.
