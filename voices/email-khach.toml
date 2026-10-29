@@ -1,0 +1,19 @@
+# Giọng email và tin nhắn gửi khách. Mục tiêu: nói việc đã làm, việc sẽ làm,
+# có ngày giờ, không câu chăm sóc khách hàng theo mẫu.
+name = "email-khach"
+kind = "email"
+emoji_max = 0
+hashtag_max = 0
+allow = []
+
+[[ban]]
+code = "V-EK-KINH"
+pattern = "^\\W*kính gửi quý khách hàng"
+msg = "Gửi cho một người thì gọi tên người đó ('Chào chị Lan'), không 'Kính gửi quý khách hàng'."
+level = "warn"
+
+[[require]]
+code = "V-EK-NGAY"
+pattern = "\\d{1,2}[/.-]\\d{1,2}|\\d{1,2}h|\\d{1,2}:\\d{2}|(thứ|chủ nhật|hôm nay|ngày mai|tuần sau|tuần này) "
+msg = "Email việc phải có mốc thời gian cụ thể (ngày, giờ, hoặc 'thứ năm tuần này')."
+level = "warn"

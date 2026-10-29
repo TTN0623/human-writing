@@ -1,0 +1,265 @@
+{
+ "ai": {
+  "files": 80,
+  "words": 22205,
+  "files_with_error": 66,
+  "pct_files_with_error": 82.5,
+  "errors_per_1000w": 9.59,
+  "warns_per_1000w": 10.94,
+  "score_median": 76.0,
+  "score_mean": 68.4,
+  "pct_score_ge_50": 68.8,
+  "pct_score_lt_20": 3.8,
+  "per_code": {
+   "A1-CHAT": {
+    "errors": 2,
+    "warnings": 0,
+    "per_1000w": 0.09
+   },
+   "A3-HOLE": {
+    "errors": 29,
+    "warnings": 0,
+    "per_1000w": 1.31
+   },
+   "A6-LIST": {
+    "errors": 0,
+    "warnings": 1,
+    "per_1000w": 0.05
+   },
+   "A7-PREAMBLE": {
+    "errors": 1,
+    "warnings": 0,
+    "per_1000w": 0.05
+   },
+   "B1-OPEN": {
+    "errors": 1,
+    "warnings": 0,
+    "per_1000w": 0.05
+   },
+   "B10-SKELETON": {
+    "errors": 0,
+    "warnings": 1,
+    "per_1000w": 0.05
+   },
+   "B11-QHOOK": {
+    "errors": 2,
+    "warnings": 0,
+    "per_1000w": 0.09
+   },
+   "B12-REASSURE": {
+    "errors": 0,
+    "warnings": 1,
+    "per_1000w": 0.05
+   },
+   "B13-CAPSLINE": {
+    "errors": 0,
+    "warnings": 20,
+    "per_1000w": 0.9
+   },
+   "B15-TEMPLATE": {
+    "errors": 0,
+    "warnings": 1,
+    "per_1000w": 0.05
+   },
+   "B2-HOOK": {
+    "errors": 1,
+    "warnings": 0,
+    "per_1000w": 0.05
+   },
+   "B4-EMO": {
+    "errors": 1,
+    "warnings": 0,
+    "per_1000w": 0.05
+   },
+   "B5-NEG": {
+    "errors": 0,
+    "warnings": 5,
+    "per_1000w": 0.23
+   },
+   "B6-SOCIAL": {
+    "errors": 0,
+    "warnings": 17,
+    "per_1000w": 0.77
+   },
+   "B8-RHYTHM": {
+    "errors": 0,
+    "warnings": 11,
+    "per_1000w": 0.5
+   },
+   "C1-INFL": {
+    "errors": 1,
+    "warnings": 0,
+    "per_1000w": 0.05
+   },
+   "C10-PROMO": {
+    "errors": 8,
+    "warnings": 29,
+    "per_1000w": 1.67
+   },
+   "C13-MOTIV": {
+    "errors": 0,
+    "warnings": 2,
+    "per_1000w": 0.09
+   },
+   "C17-CS": {
+    "errors": 15,
+    "warnings": 12,
+    "per_1000w": 1.22
+   },
+   "C19-WRAP": {
+    "errors": 0,
+    "warnings": 2,
+    "per_1000w": 0.09
+   },
+   "C2-SUM": {
+    "errors": 0,
+    "warnings": 4,
+    "per_1000w": 0.18
+   },
+   "C4-WORD": {
+    "errors": 1,
+    "warnings": 0,
+    "per_1000w": 0.05
+   },
+   "C5-COPULA": {
+    "errors": 0,
+    "warnings": 3,
+    "per_1000w": 0.14
+   },
+   "C6-STIFF": {
+    "errors": 0,
+    "warnings": 3,
+    "per_1000w": 0.14
+   },
+   "D1-DASH": {
+    "errors": 104,
+    "warnings": 0,
+    "per_1000w": 4.68
+   },
+   "D10-EMOJIBULLET": {
+    "errors": 1,
+    "warnings": 16,
+    "per_1000w": 0.77
+   },
+   "D12-MARKDOWN": {
+    "errors": 0,
+    "warnings": 21,
+    "per_1000w": 0.95
+   },
+   "D13-QHEAD": {
+    "errors": 0,
+    "warnings": 1,
+    "per_1000w": 0.05
+   },
+   "D2-EMOJIHEAD": {
+    "errors": 2,
+    "warnings": 0,
+    "per_1000w": 0.09
+   },
+   "D3-TITLECASE": {
+    "errors": 2,
+    "warnings": 3,
+    "per_1000w": 0.23
+   },
+   "D4-BOLDLIST": {
+    "errors": 28,
+    "warnings": 0,
+    "per_1000w": 1.26
+   },
+   "D5-HR": {
+    "errors": 0,
+    "warnings": 14,
+    "per_1000w": 0.63
+   },
+   "D6-BOLD": {
+    "errors": 0,
+    "warnings": 51,
+    "per_1000w": 2.3
+   },
+   "D7-HASHTAG": {
+    "errors": 2,
+    "warnings": 4,
+    "per_1000w": 0.27
+   },
+   "D8-EMOJI": {
+    "errors": 12,
+    "warnings": 11,
+    "per_1000w": 1.04
+   },
+   "D9-QUOTE": {
+    "errors": 0,
+    "warnings": 10,
+    "per_1000w": 0.45
+   }
+  }
+ },
+ "human": {
+  "files": 142,
+  "words": 30818,
+  "files_with_error": 2,
+  "pct_files_with_error": 1.4,
+  "errors_per_1000w": 0.13,
+  "warns_per_1000w": 0.62,
+  "score_median": 0.0,
+  "score_mean": 1.8,
+  "pct_score_ge_50": 0.0,
+  "pct_score_lt_20": 94.4,
+  "per_code": {
+   "B5-NEG": {
+    "errors": 0,
+    "warnings": 2,
+    "per_1000w": 0.06
+   },
+   "C10-PROMO": {
+    "errors": 0,
+    "warnings": 3,
+    "per_1000w": 0.1
+   },
+   "C11-TRANS": {
+    "errors": 0,
+    "warnings": 2,
+    "per_1000w": 0.06
+   },
+   "C16-TREND": {
+    "errors": 0,
+    "warnings": 1,
+    "per_1000w": 0.03
+   },
+   "C2-SUM": {
+    "errors": 0,
+    "warnings": 2,
+    "per_1000w": 0.06
+   },
+   "C5-COPULA": {
+    "errors": 0,
+    "warnings": 4,
+    "per_1000w": 0.13
+   },
+   "C7-VAGUE": {
+    "errors": 0,
+    "warnings": 1,
+    "per_1000w": 0.03
+   },
+   "D1-DASH": {
+    "errors": 4,
+    "warnings": 0,
+    "per_1000w": 0.13
+   },
+   "D11-NPLIST": {
+    "errors": 0,
+    "warnings": 1,
+    "per_1000w": 0.03
+   },
+   "D5-HR": {
+    "errors": 0,
+    "warnings": 1,
+    "per_1000w": 0.03
+   },
+   "D9-QUOTE": {
+    "errors": 0,
+    "warnings": 2,
+    "per_1000w": 0.06
+   }
+  }
+ }
+}

@@ -1,0 +1,31 @@
+# Giọng mẫu cho một kênh video ngắn có người dẫn xưng "tui". Chép file này, đổi tên, đổi luật cho kênh của mình,
+# rồi thêm một ca trong evals/cases/. Ca thử của giọng này: evals/cases/10-mau-kenh-voice.md, 11-mau-kenh-dat.md.
+name = "mau-kenh"
+kind = "script"
+emoji_max = 0
+hashtag_max = 5
+allow = ["B13-CAPSLINE", "D12-MARKDOWN"]
+
+[[ban]]
+code = "V-MK-XUNG"
+pattern = "\\btôi\\b|\\bmày\\b|\\btao\\b"
+msg = "Người dẫn kênh xưng 'tui', không xưng 'tôi', không gọi 'mày', 'tao'. Gọi người xem là 'mấy ông', 'mấy bà'."
+level = "error"
+
+[[ban]]
+code = "V-MK-LINK"
+pattern = "https?://(?!example\\.com/bio)\\S+"
+msg = "Kênh chỉ dẫn một link: example.com/bio."
+level = "error"
+
+[[require]]
+code = "V-MK-CTA"
+pattern = "follow kênh[^\\n]{0,40}(mai|tập sau|bữa sau|hôm sau|lần sau)[^\\n]{4,}"
+msg = "Thiếu thẻ cuối: 'Follow kênh, mai tui …' với lời nhá ít nhất 4 chữ sau 'Follow kênh'."
+level = "error"
+
+[[require]]
+code = "V-MK-TAG"
+pattern = "#tenkenh"
+msg = "Caption phải có hashtag của kênh (bỏ qua nếu file chỉ là kịch bản, chưa có caption)."
+level = "warn"

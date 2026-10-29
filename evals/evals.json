@@ -1,0 +1,96 @@
+{
+  "skill_name": "human-writing",
+  "version": "2.0.0",
+  "note": "Kịch bản thử kiểu skill-creator: mỗi ca là một yêu cầu thật, chấm bằng check.py và bằng mắt. Chạy tay: giao prompt cho một phiên có skill, lưu kết quả ra file, chạy check.py, so với assertions.",
+  "evals": [
+    {
+      "id": 1,
+      "name": "caption-social-tu-brief",
+      "prompt": "Viết caption Facebook khoảng 100 chữ cho tiệm bánh mì ở Gò Vấp: bánh mì thịt nướng 25k, mở 6h sáng, giao trong bán kính 3km phí 10k. Lưu vào outputs/caption-banh-mi.md.",
+      "kind": "social",
+      "assertions": [
+        "check.py --kind social trả 0 LỖI",
+        "điểm AI dưới 20",
+        "không mở bằng câu hỏi dò vấn đề rồi trấn an (B11-QHOOK)",
+        "có đủ ba dữ kiện 25k, 6h sáng, 3km/10k, không thêm dữ kiện nào khác",
+        "tối đa 3 hashtag, tối đa 3 emoji, không Markdown",
+        "không có câu CTA chung chung kiểu 'Inbox ngay để được tư vấn'"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "email-xin-loi-khong-giong-cskh",
+      "prompt": "Viết email 120 chữ gửi chị Hoa báo đơn hàng #4471 giao trễ hai ngày (giao thứ năm 30/10 thay vì thứ ba), tặng mã giảm 50k cho đơn sau. Lưu vào outputs/email-hoa.md.",
+      "kind": "email",
+      "assertions": [
+        "0 LỖI, không có C17-CS",
+        "câu đầu nói ngay việc giao trễ và ngày giao mới",
+        "có mốc thời gian cụ thể (30/10 hoặc thứ năm)",
+        "không 'Kính gửi quý khách hàng', gọi tên chị Hoa",
+        "không câu 'xin lỗi vì sự bất tiện này', không 'chúng tôi luôn nỗ lực'"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "soat-van-nguoi-dung-dan",
+      "prompt": "Soát giọng AI cho đoạn này và viết lại: 'Trong thời đại số, việc xây dựng thương hiệu cá nhân đóng vai trò vô cùng quan trọng. Nó không chỉ giúp bạn nổi bật mà còn mở ra nhiều cơ hội. Hãy cùng khám phá 3 bí quyết vàng sau đây!'",
+      "kind": "doc",
+      "assertions": [
+        "bản viết lại 0 LỖI",
+        "trả kèm một dòng 'Đã sửa N lỗi: mã…' thay vì bảng dài",
+        "không thêm dữ kiện, con số, tên nào không có trong đoạn gốc",
+        "không giữ cấu trúc '3 bí quyết' nếu không có đúng 3 ý"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "kich-ban-mau-kenh-voice",
+      "prompt": "Viết kịch bản 45 giây cho một kênh video ngắn về chuyện mua xe máy cũ, dùng voice mau-kenh (frontmatter voice: mau-kenh). Lưu vào projects/kenh-mau/tap-9.md.",
+      "kind": "script",
+      "voice": "mau-kenh",
+      "assertions": [
+        "check.py --voice mau-kenh trả 0 LỖI",
+        "người dẫn xưng 'tui', không có 'tôi', 'mày', 'tao'",
+        "có thẻ cuối 'Follow kênh, mai tui …' với lời nhá",
+        "không dàn bài 'Thứ nhất… Thứ hai… Cuối cùng' (B10-SKELETON)",
+        "không câu chốt truyền cảm hứng theo mẫu (C13-MOTIV)"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "bao-cao-noi-bo-ket-luan-truoc",
+      "prompt": "Viết báo cáo 250 chữ cho sếp: chiến dịch ads tháng 9 chi 18 triệu, 312 đơn, CPA 57,7k, tháng 8 CPA 49k; đề xuất tắt nhóm quảng cáo lookalike 3% vì CPA 92k. Lưu vào outputs/bao-cao-ads-t9.md.",
+      "kind": "report",
+      "assertions": [
+        "0 LỖI, điểm AI dưới 20",
+        "đề xuất (tắt lookalike 3%) nằm trong hai câu đầu",
+        "mọi tính từ khen đi kèm số",
+        "không dùng dàn bài 'Thách thức và Triển vọng' (C8-CHALL)",
+        "không danh sách '- **Nhãn:** mô tả' từ 3 dòng (D4-BOLDLIST)"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "giu-slogan-theo-yeu-cau",
+      "prompt": "Viết bài quảng cáo 150 chữ cho quán cà phê, bắt buộc giữ slogan 'Không chỉ là cà phê' ở dòng đầu. Lưu vào outputs/ads-ca-phe.md.",
+      "kind": "social",
+      "assertions": [
+        "file có dòng <!-- hw-allow: B5-NEG --> vì slogan là yêu cầu rõ",
+        "phần còn lại 0 LỖI, không thêm 'không chỉ… mà còn' nào khác",
+        "báo người dùng một dòng rằng slogan được giữ bằng hw-allow"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "tieng-anh-corrective-mid-2026",
+      "prompt": "Write a 200-word blog intro about why small shops should track CPA, not just ROAS. Save to outputs/cpa-intro.md.",
+      "kind": "doc",
+      "assertions": [
+        "0 errors; no C4-WORD vocabulary (delve, testament, pivotal, underscore)",
+        "no more than one 'rather than' / 'not X but Y' corrective frame (B14-CORRECT, B5-NEG)",
+        "no em dashes (D1-DASH)",
+        "no staged opener (B1-OPEN) or reveal hook (B2-HOOK)"
+      ]
+    }
+  ]
+}

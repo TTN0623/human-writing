@@ -1,0 +1,149 @@
+{
+ "note": "Kho văn người để đo tỷ lệ báo nhầm. Văn công khai (Wikipedia tiếng Việt bản trước 2020, Wikisource truyện đã hết hạn bản quyền) chỉ lưu trong cache (gitignore) kèm sha256 để kiểm khớp, theo cách của avoid-ai-writing/corpus. Văn riêng (tin nhắn tự gõ) không bao giờ commit.",
+ "documents": [
+  {
+   "id": "wiki-pho",
+   "source": "public",
+   "format": "wikitext",
+   "kind": "doc",
+   "lang": "vi",
+   "license": "CC BY-SA 4.0",
+   "url": "https://vi.wikipedia.org/w/index.php?oldid=56731952&action=raw",
+   "file": "wiki-pho.md",
+   "max_words": 1500,
+   "sha256": "bc65e7db0c18b6e86e13cd06b63a1fe7046b857d27482b5e8508b4a458ae4a4b"
+  },
+  {
+   "id": "wiki-ca-phe",
+   "source": "public",
+   "format": "wikitext",
+   "kind": "doc",
+   "lang": "vi",
+   "license": "CC BY-SA 4.0",
+   "url": "https://vi.wikipedia.org/w/index.php?oldid=56735384&action=raw",
+   "file": "wiki-ca-phe.md",
+   "max_words": 1500,
+   "sha256": "d929ae681c754a666d8067b8938e1195c58f9ffa013980d173319317f71ff8f8"
+  },
+  {
+   "id": "wiki-thuong-mai-dien-tu",
+   "source": "public",
+   "format": "wikitext",
+   "kind": "report",
+   "lang": "vi",
+   "license": "CC BY-SA 4.0",
+   "url": "https://vi.wikipedia.org/w/index.php?oldid=54691546&action=raw",
+   "file": "wiki-thuong-mai-dien-tu.md",
+   "max_words": 1500,
+   "sha256": "cc41fbba6b23d5d7d4ac7e8d1abf4835bd0459cf4e50a251ab990bb0c9c65799"
+  },
+  {
+   "id": "wiki-ao-dai",
+   "source": "public",
+   "format": "wikitext",
+   "kind": "doc",
+   "lang": "vi",
+   "license": "CC BY-SA 4.0",
+   "url": "https://vi.wikipedia.org/w/index.php?oldid=57168775&action=raw",
+   "file": "wiki-ao-dai.md",
+   "max_words": 1500,
+   "sha256": "47848d3d2413d2090c61f4bd4fc5725770cd59bd9843b265d0cc8f62834b7d9c"
+  },
+  {
+   "id": "wiki-giao-duc-viet-nam",
+   "source": "public",
+   "format": "wikitext",
+   "kind": "report",
+   "lang": "vi",
+   "license": "CC BY-SA 4.0",
+   "url": "https://vi.wikipedia.org/w/index.php?oldid=57273497&action=raw",
+   "file": "wiki-giao-duc-viet-nam.md",
+   "max_words": 1500,
+   "sha256": "55b8826b85b968e79c66f908f6fbffed6f0335c9244b38cafa670f0b62dd3ebd"
+  },
+  {
+   "id": "wiki-ma-tran",
+   "source": "public",
+   "format": "wikitext",
+   "kind": "academic",
+   "lang": "vi",
+   "license": "CC BY-SA 4.0",
+   "url": "https://vi.wikipedia.org/w/index.php?oldid=56598980&action=raw",
+   "file": "wiki-ma-tran.md",
+   "max_words": 1500,
+   "sha256": "71cc99d48a9a1833617fd68b7617f9d8e31410ee4a9e5797bd8920636d9df70a"
+  },
+  {
+   "id": "wiki-dao-ham",
+   "source": "public",
+   "format": "wikitext",
+   "kind": "academic",
+   "lang": "vi",
+   "license": "CC BY-SA 4.0",
+   "url": "https://vi.wikipedia.org/w/index.php?oldid=54356333&action=raw",
+   "file": "wiki-dao-ham.md",
+   "max_words": 1500,
+   "sha256": "3572ce31742bd03415a0a090b071fcfdb459a4dbf175b63e6c8648cb93f3a436"
+  },
+  {
+   "id": "ws-lao-hac",
+   "source": "public",
+   "format": "mw-html",
+   "kind": "script",
+   "lang": "vi",
+   "license": "public domain (Nam Cao, 1943)",
+   "url": "https://vi.wikisource.org/w/api.php?action=parse&prop=text&format=json&page=L%C3%A3o%20H%E1%BA%A1c",
+   "file": "ws-lao-hac.md",
+   "max_words": 2000,
+   "sha256": "571836f9a242210970b25846c463f4bd0b91d3a7d05f972ddeaaac21d7f7990a"
+  },
+  {
+   "id": "ws-hai-dua-tre",
+   "source": "public",
+   "format": "wikitext",
+   "kind": "script",
+   "lang": "vi",
+   "license": "public domain (Thạch Lam, 1938)",
+   "url": "https://vi.wikisource.org/w/index.php?title=Hai_%C4%91%E1%BB%A9a_tr%E1%BA%BB&action=raw",
+   "file": "ws-hai-dua-tre.md",
+   "max_words": 2000,
+   "sha256": "34abb37f4eef83e0e53321a12b0fb9eee5077ecbfb6e95c81f3d7fc786656a60"
+  },
+  {
+   "id": "ws-gio-lanh-dau-mua",
+   "source": "public",
+   "format": "mw-html",
+   "kind": "script",
+   "lang": "vi",
+   "license": "public domain (Thạch Lam, 1937)",
+   "url": "https://vi.wikisource.org/w/api.php?action=parse&prop=text&format=json&page=Gi%C3%B3%20l%E1%BA%A1nh%20%C4%91%E1%BA%A7u%20m%C3%B9a",
+   "file": "ws-gio-lanh-dau-mua.md",
+   "max_words": 2000,
+   "sha256": "661ee6a568e92ca20bb444fcda919f7edf3a97327f4131920fb828f45687978d"
+  },
+  {
+   "id": "ws-song-chet-mac-bay",
+   "source": "public",
+   "format": "mw-html",
+   "kind": "script",
+   "lang": "vi",
+   "license": "public domain (Phạm Duy Tốn, 1918)",
+   "url": "https://vi.wikisource.org/w/api.php?action=parse&prop=text&format=json&page=S%E1%BB%91ng%20ch%E1%BA%BFt%20m%E1%BA%B7c%20bay",
+   "file": "ws-song-chet-mac-bay.md",
+   "max_words": 2000,
+   "sha256": "e3da30b2807dd86d2ce23f95c0a562f55c3ac26c63c79ac6a79dcdb93957a4cb"
+  },
+  {
+   "id": "ws-tat-den-1",
+   "source": "public",
+   "format": "mw-html",
+   "kind": "script",
+   "lang": "vi",
+   "license": "public domain (Ngô Tất Tố, 1937)",
+   "url": "https://vi.wikisource.org/w/api.php?action=parse&prop=text&format=json&page=T%E1%BA%AFt%20%C4%91%C3%A8n/I",
+   "file": "ws-tat-den-1.md",
+   "max_words": 2000,
+   "sha256": "d1b2d6b4e00ab45ce36ef4e5d4c54730c7aa0557942d768d78e250fe4e9b58d1"
+  }
+ ]
+}

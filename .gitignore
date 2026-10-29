@@ -1,0 +1,10 @@
+# Văn người (Wikipedia, Wikisource, tin nhắn riêng) chỉ nằm trong cache, kiểm bằng sha256 trong manifest.json
+evals/corpus/cache/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Giọng thương hiệu riêng: chỉ nằm trên máy tác giả, không lên repo công khai
+voices/kp3.toml
+voices/nghia-kk.toml
+voices/miduda.toml

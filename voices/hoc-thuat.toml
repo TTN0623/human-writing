@@ -1,0 +1,13 @@
+# Giọng bài học tập, tiểu luận, ghi chú môn học. Cho phép từ nối và câu tổng kết
+# ở mức bài học, vì giáo trình tiếng Việt dùng chúng; vẫn cấm mở bài sáo và thổi phồng.
+name = "hoc-thuat"
+kind = "academic"
+emoji_max = 0
+hashtag_max = 0
+allow = ["C2-SUM", "C11-TRANS", "D13-QHEAD", "D6-BOLD"]
+
+[[ban]]
+code = "V-HT-NGUON"
+pattern = "(theo|như) (một số|nhiều) (tài liệu|nguồn|tác giả) (cho biết|cho rằng|đã nêu)"
+msg = "Bài học tập phải nêu tên tài liệu, tác giả, năm. Không nói 'nhiều tài liệu cho rằng'."
+level = "error"
