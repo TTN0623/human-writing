@@ -4,10 +4,10 @@
   "words": 22205,
   "files_with_error": 66,
   "pct_files_with_error": 82.5,
-  "errors_per_1000w": 9.59,
+  "errors_per_1000w": 10.04,
   "warns_per_1000w": 10.94,
-  "score_median": 76.0,
-  "score_mean": 68.4,
+  "score_median": 77.5,
+  "score_mean": 68.7,
   "pct_score_ge_50": 68.8,
   "pct_score_lt_20": 3.8,
   "per_code": {
@@ -132,9 +132,9 @@
     "per_1000w": 0.14
    },
    "D1-DASH": {
-    "errors": 104,
+    "errors": 114,
     "warnings": 0,
-    "per_1000w": 4.68
+    "per_1000w": 5.13
    },
    "D10-EMOJIBULLET": {
     "errors": 1,

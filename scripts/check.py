@@ -30,7 +30,7 @@ import re
 import statistics
 import sys
 
-VERSION = "2.0.1"
+VERSION = "2.1.0"
 I = re.IGNORECASE | re.MULTILINE
 KINDS = ("doc", "social", "script", "email", "academic", "report")
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -100,7 +100,7 @@ HARD = [
     ("C4-WORD", r"\b(delv(e|es|ed|ing)|tapestry|testament|pivotal|underscor(e|es|ed|ing)|showcas(e|es|ed|ing)|intricac(y|ies)|intricate|meticulous(ly)?|boast(s|ed|ing)?|bolster(s|ed|ing)?|garner(s|ed|ing)?|interplay|vibrant|nestled|groundbreaking|renowned)\b", "AI vocabulary (Wikipedia list). Replace with a plain word."),
 
     # D. Trình bày
-    ("D1-DASH", r"(?<!<)—(?![—–-]*>)|\s--\s|\s–\s|(?<!<)–\s|\s–(?![—–-]*>)", "Gạch ngang dài. Thay bằng dấu phẩy, chấm, hai chấm, ngoặc đơn, hoặc viết lại câu. Mũi tên (—>, –>, <—) được phép."),
+    ("D1-DASH", r"(?<!<)—(?![—–-]*>)|\s--\s|\s–\s|(?<!<)–\s|\s–(?![—–-]*>)", "Gạch ngang dài. Thay bằng dấu phẩy, chấm, hai chấm, ngoặc đơn, gạch ngắn (-) hoặc viết lại câu. Được phép: mũi tên, khoảng số, số âm, ô trống trong bảng, dòng ghi nguồn, lời thoại trong kịch bản và truyện."),
 ]
 
 # ---------------------------------------------------------------- CẢNH BÁO
@@ -298,7 +298,47 @@ def verdict(score):
     return "sạch" if score < 20 else ("nghi" if score < 50 else "giống AI")
 
 
-def check(raw, kind="doc", voice=None, allow=None):
+STORY_PATH = re.compile(r"truyen|truyện|story|tieu-thuyet|tiểu thuyết", re.I)
+
+
+def is_story(path="", raw=""):
+    """File truyện: đường dẫn có truyen/story, hoặc frontmatter `the-loai: truyen` / `genre: story`."""
+    fm = frontmatter(raw) if raw else {}
+    g = (fm.get("the-loai") or fm.get("genre") or "").lower()
+    return bool(STORY_PATH.search(path or "")) or g in ("truyen", "truyện", "story")
+
+
+def dash_ok(text, m, kind, story):
+    """Gạch ngang dài ở chỗ này là ký hiệu chứ không nối câu thì cho qua (bản duyệt 2026-10-29)."""
+    g = m.group(0)
+    if not any(ch in "—–" for ch in g):
+        return False  # " -- " hai gạch ngắn thay gạch dài: vẫn bắt
+    i = m.start() + next(k for k, ch in enumerate(g) if ch in "—–")
+    ls = text.rfind("\n", 0, i) + 1
+    le = text.find("\n", i)
+    le = len(text) if le < 0 else le
+    before, after = text[ls:i], text[i + 1:le]
+    b1, a1 = before[-1:], after[:1]
+    # Khoảng số dính liền (2020–2024) với gạch ngắn vừa; số âm (–5°C, —3)
+    if before.rstrip()[-1:].isdigit() and after.lstrip()[:1].isdigit():
+        return True
+    if a1.isdigit() and (b1 == "" or b1 in " \t([/"):
+        return True
+    # Ô trống trong bảng: | — |
+    if before.lstrip().startswith("|") and before.rstrip().endswith("|") and after.lstrip().startswith("|"):
+        return True
+    head = before.strip() == ""
+    rest = after.strip()
+    # Dòng ghi nguồn: — Nam Cao, Lão Hạc (đầu dòng hoặc sau câu trích, tên viết hoa, ngắn, không dấu kết câu)
+    if (head or re.search(r"[.!?…\"”»]\s*$", before)) and rest[:1].isupper() and len(rest.split()) <= 15 and not re.search(r"[.!?…:]$", rest):
+        return True
+    # Lời thoại đầu dòng: chỉ trong kịch bản và truyện
+    if head and rest and (kind == "script" or story):
+        return True
+    return False
+
+
+def check(raw, kind="doc", voice=None, allow=None, story=None):
     """Trả (errs, warns, words). Mỗi mục: {code, line, found, fix}. `allow` là tập mã được miễn (ghép với hw-allow trong file)."""
     voice = voice or {}
     kind = kind if kind in KINDS else "doc"
@@ -310,16 +350,16 @@ def check(raw, kind="doc", voice=None, allow=None):
     text = "\n".join(lines)
     errs, warns = [], []
     social = kind == "social"
+    if story is None:
+        story = is_story("", raw)
 
     def add(bucket, code, line, found, msg):
         bucket.append({"code": code, "line": line, "found": snippet(found), "fix": msg})
 
     for code, pat, msg in HARD:
         for m in re.finditer(pat, text, I):
-            if code == "D1-DASH" and "–" in m.group(0):
-                a, b = text[max(0, m.start() - 1): m.start()], text[m.end(): m.end() + 1]
-                if a.isdigit() or b.isdigit():
-                    continue
+            if code == "D1-DASH" and dash_ok(text, m, kind, story):
+                continue
             add(errs, code, line_of(text, m.start()), m.group(0), msg)
 
     for code, pat, msg in WARN:
@@ -522,7 +562,7 @@ def run(raw, path="", kind=None, voice=None):
         except (FileNotFoundError, ValueError) as e:
             note = f"frontmatter voice: {e}. Chấm không giọng."
     k = kind or v.get("kind") or guess_kind(path, raw)
-    errs, warns, words = check(raw, k, v)
+    errs, warns, words = check(raw, k, v, story=is_story(path, raw))
     off, _ = directives(raw)
     s = 0 if off else score_of(errs, warns, words)
     return {"file": path or "stdin", "kind": k, "voice": v.get("name", ""), "words": words, "off": off,

@@ -2,6 +2,15 @@
 
 Theo dạng Keep a Changelog, số phiên bản theo SemVer. Mã luật (A1-CHAT, B5-NEG…) là mã do `scripts/check.py` in ra.
 
+## 2.1.0 (2026-10-29)
+
+Tài duyệt từng trường hợp gạch ngang dài. D1-DASH giờ cho qua các chỗ gạch là ký hiệu, vẫn bắt chỗ gạch nối câu.
+
+- Được phép: mũi tên, khoảng số (gạch dài hay gạch ngắn vừa, có hay không có dấu cách), số âm, ô trống trong bảng, dòng ghi nguồn ngắn sau trích dẫn, lời thoại đầu dòng trong kịch bản và truyện.
+- Vẫn bắt: bảng giá kiểu tên rồi gạch rồi giá (kể cả gạch ngắn vừa, bản cũ để lọt), tiêu đề có phần phụ, câu ngắt giữa chừng, cặp gạch chèn ý, gạch nối hai vế câu, văn tiếng Anh. Tên riêng gốc có gạch thì đổi sang gạch ngắn.
+- File truyện nhận theo đường dẫn (`truyen`, `story`, `tieu-thuyet`) hoặc frontmatter `the-loai: truyen`, `genre: story`. Hàm mới `is_story()`, hook truyền cờ này vào `check()`.
+- Thêm ca 16 (các chỗ được phép), 17 (các chỗ vẫn bắt), 18 (lời thoại trong kịch bản). Văn AI: LỖI trên 1.000 chữ từ 9,59 lên 10,04, điểm trung vị từ 76 lên 78. Văn người giữ 1,4%.
+
 ## 2.0.1 (2026-10-29)
 
 - D1-DASH cho phép gạch ngang dài dùng làm mũi tên: `—>`, `–>`, `<—`. Máy Mac tự đổi `-->` thành dạng này khi gõ, và người viết dùng nó để trả lời xen từng ý. Gạch ngang dài nối câu vẫn là LỖI.

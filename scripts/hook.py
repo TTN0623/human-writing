@@ -76,7 +76,7 @@ def main():
             voice = check.load_voice(fm["voice"])
         except Exception:
             voice = {}
-    errs, warns, words = check.check(text, kind, voice, allow)
+    errs, warns, words = check.check(text, kind, voice, allow, story=check.is_story(path, whole))
     # Đoạn sửa nhỏ: chỉ ép LỖI; các đo nhịp/độ dày cần cả file mới có nghĩa
     warns = [] if partial else warns
     score = check.score_of(errs, warns, words) if not partial else None

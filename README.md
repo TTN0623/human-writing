@@ -12,7 +12,7 @@ scripts/test_check.py    ca đơn vị + bảng đo trên kho
 scripts/corpus.py        sinh văn AI, tải văn người, trích tin nhắn riêng
 voices/*.toml            giọng riêng: mau-kenh, hoc-thuat, email-khach
 LICENSE                  MIT cho bộ luật và script
-evals/cases/             15 ca đơn vị có frontmatter kỳ vọng
+evals/cases/             18 ca đơn vị có frontmatter kỳ vọng
 evals/corpus/ai/         văn AI sinh mặc định (commit được)
 evals/corpus/manifest.json  sha256 của văn người công khai, bản thân văn người không commit
 evals/baseline.json      số đo chuẩn của bản hiện tại
@@ -69,7 +69,7 @@ pbpaste | python3 -I scripts/check.py -
 
 Kết quả có ba phần: dòng tóm tắt (số chữ, LỖI, CẢNH BÁO, điểm AI, kết luận), danh sách LỖI bắt buộc sửa, danh sách CẢNH BÁO sửa hoặc nêu lý do giữ. Mỗi dòng ghi mã, số dòng, đoạn bị bắt và cách thay.
 
-Điểm AI: dưới 20 là sạch, 20 đến 49 là nghi, từ 50 là giống AI. Trên kho mẫu của bản này, 80 bài văn AI sinh mặc định có điểm trung vị 76, 142 bài văn người có điểm trung vị 0.
+Điểm AI: dưới 20 là sạch, 20 đến 49 là nghi, từ 50 là giống AI. Trên kho mẫu của bản này, 80 bài văn AI sinh mặc định có điểm trung vị 78, 142 bài văn người có điểm trung vị 0.
 
 ## Thể loại và giọng
 
@@ -82,7 +82,7 @@ Hai chỉ thị viết trong file khi cần: `<!-- human-writing: off -->` bỏ 
 ## Kiểm thử và kho văn
 
 ```bash
-python3 -I scripts/test_check.py              # 15 ca đơn vị + bảng đo
+python3 -I scripts/test_check.py              # 18 ca đơn vị + bảng đo
 python3 -I scripts/test_check.py --codes      # từng mã bắt bao nhiêu ở AI và người
 python3 -I scripts/test_check.py --baseline   # so với evals/baseline.json
 python3 -I scripts/corpus.py fetch            # tải văn người theo manifest (cần mạng)
@@ -101,4 +101,4 @@ Luật thêm mã mới: thêm ở mức CẢNH BÁO, thêm một ca, chạy `--c
 
 ## English summary
 
-`human-writing` is a Claude Code skill that makes Vietnamese (and English) text read like a person wrote it. `SKILL.md` holds the rules; `scripts/check.py` scores a file from 0 to 100 (under 20 is clean, 50 and above reads like AI) across six kinds (`doc`, `social`, `script`, `email`, `academic`, `report`) and optional voice profiles in `voices/*.toml`. A PostToolUse hook blocks saves that still contain hard errors. `scripts/test_check.py` runs 15 unit cases and reports metrics on an AI corpus (generated, committed) and a human corpus (public Vietnamese Wikipedia and Wikisource, kept out of the repo and pinned by sha256, plus private messages that never leave the author's machine). Rules are kept only when they hit AI text far more often than human text. Code, rules and examples are MIT licensed (`LICENSE`); `references/` keeps its upstream licenses: Wikipedia Signs of AI writing (CC BY-SA 4.0), blader/humanizer (MIT), conorbronsdon/avoid-ai-writing (MIT).
+`human-writing` is a Claude Code skill that makes Vietnamese (and English) text read like a person wrote it. `SKILL.md` holds the rules; `scripts/check.py` scores a file from 0 to 100 (under 20 is clean, 50 and above reads like AI) across six kinds (`doc`, `social`, `script`, `email`, `academic`, `report`) and optional voice profiles in `voices/*.toml`. A PostToolUse hook blocks saves that still contain hard errors. `scripts/test_check.py` runs 18 unit cases and reports metrics on an AI corpus (generated, committed) and a human corpus (public Vietnamese Wikipedia and Wikisource, kept out of the repo and pinned by sha256, plus private messages that never leave the author's machine). Rules are kept only when they hit AI text far more often than human text. Code, rules and examples are MIT licensed (`LICENSE`); `references/` keeps its upstream licenses: Wikipedia Signs of AI writing (CC BY-SA 4.0), blader/humanizer (MIT), conorbronsdon/avoid-ai-writing (MIT).

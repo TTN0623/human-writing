@@ -3,7 +3,7 @@ name: human-writing
 description: >-
   Bộ luật viết như người thật (tiếng Việt và tiếng Anh), bắt buộc cho mọi văn bản giao người khác đọc: caption, bài social, quảng cáo, kịch bản, email, tin nhắn khách, proposal, báo cáo, nội dung slide, bài học tập. Cấm dấu hiệu văn AI (mở bài sáo, song song phủ định, gạch ngang dài, bộ ba, lời chatbot, giọng chăm sóc khách hàng, câu hỏi móc rồi trấn an). Có check.py chấm điểm AI 0 đến 100 theo 6 thể loại và giọng riêng (voices/), hook chặn khi lưu file sản phẩm, bộ kiểm thử trên kho văn AI và văn người. Dùng cả khi Tài nói 'viết cho tự nhiên', 'nghe như AI', 'humanize', 'soát giọng AI', 'điểm AI'.
 metadata:
-  version: "2.0.1"
+  version: "2.1.0"
   created: "2026-10-08"
   updated: "2026-10-29"
 ---
@@ -45,7 +45,7 @@ Wikipedia nhấn mạnh: các dấu hiệu chỉ là *triệu chứng*. Bệnh t
 
 Điểm tính từ mật độ: mỗi LỖI nặng gấp ba CẢNH BÁO, chia cho số chữ (tối thiểu 80 chữ để bài ngắn không bị phạt oan), rồi ép về thang 0 đến 100. Một bài 200 chữ có 1 LỖI và 2 CẢNH BÁO được khoảng 63 điểm; cùng bài đó chỉ còn 2 CẢNH BÁO thì khoảng 33.
 
-Số đo trên kho mẫu (`evals/`, bản 2.0.0): văn AI sinh mặc định (80 bài từ Gemini, Claude, GPT-OSS, đủ 6 thể loại) có 82% file dính LỖI, điểm trung vị 76; văn người (Wikipedia tiếng Việt bản cũ, truyện trên Wikisource, tin nhắn tự gõ của Tài) có 1,4% file dính LỖI, điểm trung vị 0, 94% file dưới 20. Bản 1.0.0 đo trên 27 bài AI đầu tiên chỉ bắt được 37%. Bảng đầy đủ nằm trong `evals/baseline.json` và CHANGELOG.
+Số đo trên kho mẫu (`evals/`, bản 2.1.0): văn AI sinh mặc định (80 bài từ Gemini, Claude, GPT-OSS, đủ 6 thể loại) có 82% file dính LỖI, điểm trung vị 78; văn người (Wikipedia tiếng Việt bản cũ, truyện trên Wikisource, tin nhắn tự gõ của Tài) có 1,4% file dính LỖI, điểm trung vị 0, 94% file dưới 20. Bản 1.0.0 đo trên 27 bài AI đầu tiên chỉ bắt được 37%. Bảng đầy đủ nằm trong `evals/baseline.json` và CHANGELOG.
 
 ## THỂ LOẠI
 
@@ -171,7 +171,7 @@ Mã ở cột đầu khớp với kết quả của `check.py`. **LỖI** là c�
 
 | Mã | Mức | Cấm | Ghi chú |
 |---|---|---|---|
-| D1-DASH | LỖI | Gạch ngang dài (em dash, en dash) dùng làm dấu nối câu | Thay bằng dấu phẩy, chấm, hai chấm, ngoặc đơn. Gạch nối giữa hai số (`2020–2024`) được giữ. Gạch ngang dài làm mũi tên (`—>`, `–>`, `<—`, thường do máy tự đổi từ `-->`) được phép. Wikipedia 10/2026 đã chuyển dấu này xuống "dấu hiệu cũ" vì mô hình mới bị khóa không dùng; skill vẫn giữ làm luật nhà theo ý Tài. Trên kho văn người, luật này bắt 4 chỗ trong 2 bài Wikipedia và Wikisource (ký hiệu toán, dòng ghi nguồn), là tỉ lệ bắt nhầm đã biết. |
+| D1-DASH | LỖI | Gạch ngang dài (em dash, en dash) dùng làm dấu nối câu, chèn ý, ngắt lời, tách tiêu đề, tách tên với giá | Thay bằng dấu phẩy, chấm, hai chấm, ngoặc đơn, ba chấm; tên riêng gốc có gạch thì đổi sang gạch ngắn (-). Được phép (bản duyệt 2026-10-29): mũi tên (`—>`, `–>`, `<—`); khoảng số (`2020–2024`, `10 – 15`); số âm (`–5°C`); ô trống trong bảng (`\| — \|`); dòng ghi nguồn ngắn sau trích dẫn (`— Nam Cao, Lão Hạc`); lời thoại đầu dòng trong kịch bản (kind script) và truyện (đường dẫn có `truyen`, `story` hoặc frontmatter `the-loai: truyen`). Wikipedia 10/2026 đã chuyển dấu này xuống "dấu hiệu cũ"; skill vẫn giữ làm luật nhà. Trên kho văn người, luật bắt 4 chỗ trong 2 bài (ký hiệu toán, một dòng ghi nguồn bị dính vào thân truyện khi tải). |
 | D2-EMOJIHEAD | LỖI | Emoji trong tiêu đề | |
 | D4-BOLDLIST | LỖI | Danh sách `- **Nhãn:** mô tả` từ 3 dòng | Viết thành câu, hoặc bỏ nhãn đậm. Nhãn chỉ giữ khi người đọc cần dò nhanh (bảng giá, thông số). |
 | D10-EMOJIBULLET | CẢNH BÁO ở social, LỖI ở còn lại | Emoji làm đầu dòng từ 3 dòng | `✅ Giao nhanh` `✅ Giá tốt` thành câu có dữ kiện |
@@ -229,7 +229,7 @@ Wikipedia liệt kê những thứ không chứng minh văn là AI: ngữ pháp 
 
 Hook `scripts/hook.py` đăng ký ở `~/.claude/settings.json` (PostToolUse cho Write, Edit, MultiEdit). Chỉ xét file `.md`, `.txt` trong thư mục sản phẩm (`outputs/`, `projects/`, `courses/`, `research/`, `team/`, `deliverables/`, `drafts/`), bỏ `.agents/`, `.claude/`, `docs/`, `prompts/`, `_archive/`, `evals/corpus/`. Write thì quét cả file và báo điểm; Edit chỉ quét đoạn mới thêm và chỉ ép LỖI. Còn LỖI thì hook trả `decision: block` kèm danh sách, Claude phải viết lại rồi lưu lại. Lỗi trong hook không bao giờ làm hỏng phiên.
 
-Kiểm thử `python3 -I scripts/test_check.py`: chạy 15 ca đơn vị trong `evals/cases/` (frontmatter nêu `kind`, `voice`, `expect_errors`, `expect_warnings`, `expect_no`, `expect_clean`, `max_score`, `min_score`), rồi in bảng đo trên kho. Thêm `--codes` để xem từng mã bắt bao nhiêu ở văn AI và văn người; `--baseline` để so với `evals/baseline.json` và báo mã nào bắt nhầm người nhiều hơn trước; `--impl <check_cu.py>` để so hai bản.
+Kiểm thử `python3 -I scripts/test_check.py`: chạy 18 ca đơn vị trong `evals/cases/` (frontmatter nêu `kind`, `voice`, `expect_errors`, `expect_warnings`, `expect_no`, `expect_clean`, `max_score`, `min_score`), rồi in bảng đo trên kho. Thêm `--codes` để xem từng mã bắt bao nhiêu ở văn AI và văn người; `--baseline` để so với `evals/baseline.json` và báo mã nào bắt nhầm người nhiều hơn trước; `--impl <check_cu.py>` để so hai bản.
 
 Kho văn `scripts/corpus.py`: `gen` sinh văn AI mặc định bằng `agy` (Gemini, Claude) vào `evals/corpus/ai/` (commit được); `fetch` tải văn người công khai (Wikipedia tiếng Việt bản trước 2020, Wikisource) vào `evals/corpus/cache/` theo `manifest.json` có sha256; `private` trích tin nhắn tự gõ của người dùng từ lịch sử phiên vào cache, bỏ tin dán lại lời AI. Văn người không bao giờ commit: văn công khai có sha256 trong `manifest.json` để tải lại đúng bản, tin nhắn riêng chỉ nằm trên máy.
 
